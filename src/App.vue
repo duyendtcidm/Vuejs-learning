@@ -1,30 +1,33 @@
 <template>
-<!-- Can't use arrow function in method & I don't know why-->
-  <h2> Add method: {{ add(2, 3, 4)}}</h2>
-  <h2> Suctract method: {{ subtract(3, 4)}}</h2>
-  <h2> Multiply by {{ multyply(23)}}</h2>
+  <product-list-one v-bind:products="products"></product-list-one>
+  <product-list-two v-bind:products="products"></product-list-two>
 </template>
 
 <script>
+import ProductListOne from './components/ProductItemsOne.vue'
+import ProductListTwo from './components/ProductItemsTwo.vue'
+
 export default {
   name: 'App',
-  data() {
-    return {
-      baseMultyply: 5,
-    } 
+  components: {
+    'product-list-one': ProductListOne,
+    'product-list-two': ProductListTwo,
   },
 
-  methods: {
-      add(a, b, c) {
-        return a+b+c
-      },
-      subtract(a, b) {
-        return a-b
-      },
-      multyply(num) {
-        return num * this.baseMultyply
-      }
+  data() {
+    return {
+      products: [
+        {name: 'Pen', price: 20},
+        {name: 'Pencil', price: 15},
+        {name: 'Erase pen', price: 80},
+        {name: 'Ruler', price: 15},
+        {name: 'pencil case', price: 100},
+        {name: 'Crayon', price: 120},
+        {name: 'chalk', price: 10},
+      ]     
     }
+  }
+
 }
 </script>
 
@@ -37,5 +40,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-
 </style>
